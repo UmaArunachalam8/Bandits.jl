@@ -20,6 +20,7 @@ type EXP3 <: BanditAlgorithmBase
              Categorical(1/noOfArms*ones(noOfArms))
         )
     end
+
 end
 
 function getArmIndex( agent::EXP3 )
@@ -40,6 +41,7 @@ function updateReward( agent::EXP3, r::Real )
 
     # Make it a distrubution
     agent.pDist = Categorical( p )
+    #print(p)
 end
 
 function reset( agent::EXP3 )
@@ -119,6 +121,214 @@ function info_str( agent::EXP31, latex::Bool )
 end
 
 """
+    EXP3P Implementation
+    Based on : Fig.2 in Auer, P., Bianchi, N. C., Freund, Y., & E.Schapire, R. (2002). The Non-Stochastic Multi-Armed bandit problem. SIAM Journal of Computing, 22, 322–331. http://doi.org/10.1109/CDC.1983.269708
+"""
+type EXP3P <: BanditAlgorithmBase
+    noOfArms::Int64
+    noOfSteps::Int64
+    lastPlayedArm::Int64
+    T::Int64
+
+    γ::Float64
+    α::Float64
+
+    wVec::Vector{Float64}
+    p::Vector{Float64}
+    pDist::Categorical
+
+    function EXP3P( noOfArms::Integer, γ::Real, α::Real, T::Int64, def_var=1 )
+        new( noOfArms,
+             0,
+             0,
+             T,
+             γ,
+             α,
+             exp(α*γ/3*sqrt(T/noOfArms)*def_var)*ones(noOfArms),
+             zeros(noOfArms),
+             Categorical(1/noOfArms*ones(noOfArms))
+        )
+    end
+end
+
+function getArmIndex( agent::EXP3P )
+    agent.lastPlayedArm = rand( agent.pDist )
+    return agent.lastPlayedArm
+end
+
+function updateReward( agent::EXP3P, r::Real )
+    if(agent.noOfSteps==0)
+      agent.p = (1-agent.γ) * agent.wVec/sum(agent.wVec) + agent.γ/agent.noOfArms
+    end
+    agent.noOfSteps += 1;
+    r_est = r/agent.pDist.p[agent.lastPlayedArm]
+    agent.wVec[agent.lastPlayedArm] = agent.wVec[agent.lastPlayedArm] * exp((agent.γ/(3*agent.noOfArms))*(r_est+(agent.α/(agent.p[agent.lastPlayedArm]*sqrt(agent.noOfArms*agent.T)))))
+    agent.p = (1-agent.γ) * agent.wVec/sum(agent.wVec) + agent.γ/agent.noOfArms
+    agent.pDist = Categorical( agent.p )
+    #print(agent.p)
+end
+
+function reset( agent::EXP3P, def_var=1 )
+    agent.noOfSteps     = 0
+    agent.lastPlayedArm = 0
+    agent.p             = zeros(agent.noOfArms)
+    agent.wVec= exp(agent.α*agent.γ/3*sqrt(agent.T/agent.noOfArms)*def_var)*ones(agent.noOfArms)
+    agent.pDist= Categorical( 1/agent.noOfArms*ones(agent.noOfArms) )
+end
+
+function info_str( agent::EXP3P, latex::Bool )
+    if latex
+        return @sprintf( "EXP3P (\$\\gamma = %4.3f, alpha= %4.3f\$)", agent.γ, agent.α)
+    else
+        return @sprintf( "EXP3P (γ = %4.3f,α = %4.3f)", agent.γ, agent.α )
+    end
+end
+
+"""
+    EXP3S Implementation
+    Based on : Fig.2 in Auer, P., Bianchi, N. C., Freund, Y., & E.Schapire, R. (2002). The Non-Stochastic Multi-Armed bandit problem. SIAM Journal of Computing, 22, 322–331. http://doi.org/10.1109/CDC.1983.269708
+"""
+type EXP3S <: BanditAlgorithmBase
+  noOfArms::Int64
+  noOfSteps::Int64
+  lastPlayedArm::Int64
+  T::Int64
+
+  γ::Float64
+  α::Float64
+
+  wVec::Vector{Float64}
+  p::Vector{Float64}
+  pDist::Categorical
+
+  function EXP3S( noOfArms::Integer, γ::Real, α::Real, T::Int64 )
+      new( noOfArms,
+           0,
+           0,
+           T,
+           γ,
+           α,
+           ones(noOfArms),
+           zeros(noOfArms),
+           Categorical(1/noOfArms*ones(noOfArms))
+      )
+  end
+end
+
+function getArmIndex( agent::EXP3S )
+    agent.lastPlayedArm = rand( agent.pDist )
+    return agent.lastPlayedArm
+end
+
+function updateReward( agent::EXP3S, r::Real )
+    if(agent.noOfSteps==0)
+      agent.p = (1-agent.γ) * agent.wVec/sum(agent.wVec) + agent.γ/agent.noOfArms
+    end
+    agent.noOfSteps += 1;
+    r_est = r/agent.pDist.p[agent.lastPlayedArm]
+    agent.wVec[agent.lastPlayedArm] = agent.wVec[agent.lastPlayedArm] * exp(agent.γ*r_est/agent.noOfArms)+(sum(agent.wVec))*(e*agent.α/agent.noOfArms)
+    agent.p = (1-agent.γ) * agent.wVec/sum(agent.wVec) + agent.γ/agent.noOfArms
+    agent.pDist = Categorical( agent.p )
+    #print(agent.p)
+end
+
+function reset( agent::EXP3S)
+    agent.noOfSteps     = 0
+    agent.lastPlayedArm = 0
+    agent.p             = zeros(agent.noOfArms)
+    agent.wVec          = ones(agent.noOfArms)
+    agent.pDist         = Categorical( 1/agent.noOfArms*ones(agent.noOfArms) )
+end
+
+function info_str( agent::EXP3S, latex::Bool )
+    if latex
+        return @sprintf( "EXP3S (\$\\gamma = %4.3f, alpha= %4.3f\$)", agent.γ, agent.α)
+    else
+        return @sprintf( "EXP3S (γ = %4.3f,α = %4.3f)", agent.γ, agent.α )
+    end
+end
+
+"""
+    EXP4 Implementation
+    Based on : Fig.2 in Auer, P., Bianchi, N. C., Freund, Y., & E.Schapire, R. (2002). The Non-Stochastic Multi-Armed bandit problem. SIAM Journal of Computing, 22, 322–331. http://doi.org/10.1109/CDC.1983.269708
+"""
+type EXP4 <: BanditAlgorithmBase
+    noOfArms::Int64
+    noOfSteps::Int64
+    noOfExperts::Int64
+    lastPlayedArm::Int64
+
+    γ::Float64
+
+    p::Vector{Float64}
+    adviceVec::Any#Vector
+    wVec::Vector
+    expgain::Vector
+    pDist::Categorical
+
+    function EXP4( noOfArms::Integer, noOfExperts::Integer, γ::Real )
+        new( noOfArms,
+             0,
+             noOfExperts,
+             0,
+             γ,
+             1/noOfArms*ones(noOfArms),
+             1/noOfArms*ones(noOfArms,noOfExperts),
+             ones(noOfExperts),
+             zeros(noOfExperts),
+             Categorical(1/noOfArms*ones(noOfArms))
+        )
+    end
+end
+
+function getArmIndex( agent::EXP4 )
+    agent.lastPlayedArm = rand( agent.pDist )
+    return agent.lastPlayedArm
+end
+
+function getAdviceVectors(agent::EXP4, advvec::Any)
+  agent.adviceVec=advvec
+end
+
+function updateReward(agent::EXP4, r::Real)
+  agent.noOfSteps     = agent.noOfSteps + 1;
+  r_est = r/agent.pDist.p[agent.lastPlayedArm]
+  #println(r_est)
+  agent.expgain = agent.adviceVec[agent.lastPlayedArm,:].*r_est
+  dumm=agent.wVec;
+  agent.wVec = agent.wVec.* exp.(agent.γ.*agent.expgain./agent.noOfArms)
+  #println(agent.wVec)
+  for j=1:agent.noOfArms
+    agent.p[j] = (1-agent.γ) * sum(((agent.wVec.*agent.adviceVec[j,:])/sum(agent.wVec))) + agent.γ/agent.noOfArms
+  end
+  #println(agent.p)
+  if(round(sum(agent.p))!=1.0)
+    println(agent.noOfSteps)
+    println(r_est)
+    println(dumm)
+  end
+  agent.pDist = Categorical( agent.p )
+end
+
+function reset( agent::EXP4 )
+    agent.noOfSteps     = 0
+    agent.lastPlayedArm = 0
+    agent.adviceVec     = 1/agent.noOfArms*ones(agent.noOfArms,agent.noOfExperts)
+    agent.wVec          = ones( agent.noOfExperts )
+    agent.p             = 1/agent.noOfArms*ones(agent.noOfArms)
+    agent.expgain       = zeros( agent.noOfExperts )
+    agent.pDist         = Categorical( 1/agent.noOfArms*ones(agent.noOfArms) )
+end
+
+function info_str( agent::EXP4, latex::Bool )
+    if latex
+        return @sprintf( "EXP4 (\$\\gamma = %4.3f\$)", agent.γ )
+    else
+        return @sprintf( "EXP4 (γ = %4.3f)", agent.γ )
+    end
+end
+
+"""
     REXP3 Implementation
     Based on Besbes, O., Gur, Y., & Zeevi, A. (2014). Stochastic Multi-Armed-Bandit Problem with Non-stationary Rewards. Advances in Neural Information Processing Systems, 2, 1–9.
 """
@@ -168,10 +378,7 @@ function info_str( agent::REXP3, latex::Bool )
     end
 end
 
-"""
-    EXP3-IX Implementation
-    Based on Neu, G. (2015). Explore no more: improved high-probability regret bounds for non-stochastic bandits. In Advances in Neural Information Processing Systems (pp. 1–9).
-"""
+
 
 type EXP3IX <: BanditAlgorithmBase
     noOfArms::Int64
