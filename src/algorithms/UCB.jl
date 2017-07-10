@@ -47,6 +47,7 @@ function updateReward( agent::UCB1, r::Real )
     # Update UCB indices
     agent.ucbIndices = agent.cummReward./agent.count +
                         √(2*log(agent.noOfSteps)./agent.count)
+
 end
 
 function reset( agent::UCB1 )
@@ -67,32 +68,95 @@ end
     Based on: Figure-2, Auer, P., Bianchi, N. C., & Fischer, P. (2002). Finite time analysis of the multiarmed bandit problem. Machine Learning, 47, 235–256.
 """
 type UCB2 <: BanditAlgorithmBase
-    noOfArms::Int64
-    noOfSteps::Int64
-    lastPlayedArm::Int64
-    α::Float64
+  noOfArms::Int64
+  noOfSteps::Int64
+  lastPlayedArm::Int64
+  α::Float64
+  n::Float64
+  counter::Int64
+  temporary::Int64
 
-    cummReward::Vector{Float64}
-    count::Vector{Int64}
+  nEpoch::Vector{Int64}
+  cummReward::Vector{Float64}
+  count::Vector{Int64}
+  expFunc::Vector{Float64}
+  ucbind::Vector{Float64}
 
     function UCB2( noOfArms::Int, α::Float64 )
-        new( noOfArms,
-             0,
-             0,
-             α,
-             zeros(Float64,noOfArms),
-             zeros(Int64,noOfArms)
-        )
+      new( noOfArms,
+           0,
+           0,
+           α,
+           0,
+           0,
+           0,
+           zeros(Int64,noOfArms),
+           zeros(Float64,noOfArms),
+           zeros(Int64,noOfArms),
+           ones(Int64,noOfArms),
+           zeros(Float64,noOfArms)
+
+      )
     end
 end
 
-# function getArmIndex( agent::UCB2 )
-#
-# end
-#
-# function updateReward( agent::UCB2, r::Float64 )
-#
-# end
+ function getArmIndex( agent::UCB2 )
+   if(agent.noOfSteps<agent.noOfArms)
+     agent.lastPlayedArm=agent.noOfSteps+1#initial execution where all arms must be played once
+     return agent.lastPlayedArm
+   else
+     #agent.n=round(agent.expFunc[agent.lastPlayedArm]*agent.α)
+     if(agent.counter>=agent.n)
+       agent.lastPlayedArm = findmax(agent.ucbind)[2]
+       agent.n=round(agent.expFunc[agent.lastPlayedArm]*agent.α)
+       agent.counter=0
+       return agent.lastPlayedArm
+     elseif (agent.noOfSteps==agent.noOfArms)
+       agent.lastPlayedArm = findmax(agent.ucbind)[2]
+       agent.n=round(agent.expFunc[agent.lastPlayedArm]*agent.α)
+       agent.counter=0
+       return agent.lastPlayedArm
+     else
+       if(agent.counter==0)
+         agent.temporary = findmax(agent.ucbind)[2]
+       end
+       agent.lastPlayedArm=agent.temporary
+       agent.counter+=1
+       if(agent.counter==agent.n)
+         agent.nEpoch[agent.lastPlayedArm]+=1;#updating nepoch after n executions
+       end
+       return agent.temporary
+     end
+   end
+ end
+
+ function updateReward( agent::UCB2, r::Float64 )
+   agent.cummReward[agent.lastPlayedArm] += r
+   agent.count[agent.lastPlayedArm] += 1
+   agent.noOfSteps += 1
+   if(agent.noOfSteps>agent.noOfArms)#Initially,Until all arms are played atleast once,dont update these two arrays
+     agent.expFunc[agent.lastPlayedArm]=(1+agent.α)^agent.nEpoch[agent.lastPlayedArm]
+     agent.ucbind=agent.cummReward./agent.count +sqrt(abs(((1+agent.α)*log(e*agent.noOfSteps./agent.expFunc))./(2.*agent.expFunc)))
+   end
+ end
+
+ function reset( agent::UCB2 )
+     agent.noOfSteps     = 0
+     agent.lastPlayedArm = 0
+     agent.counter       = 0
+     agent.temporary     =0
+
+     agent.cummReward    = zeros( Float64, agent.noOfArms )
+     agent.count         = zeros( Int64, agent.noOfArms )
+     agent.ucbind        = zeros( Float64, agent.noOfArms )
+     agent.expFunc       = ones( Int64, agent.noOfArms )
+     agent.nEpoch        = zeros( Int64, agent.noOfArms )
+
+ end
+
+ function info_str( agent::UCB2, latex::Bool )
+     return @sprintf( "UCB2" )
+ end
 
 
 """
