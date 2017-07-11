@@ -9,9 +9,5 @@ This algorithm uses one parameter ξ, with which a balance can be made between e
 
 \frac{\sum_{i=1}^{t} R_i.1_a}{n_a}
 
-
-where $R_i is reward obtained at step $i for an arm $a, $t is the number of steps played so far and $n_a is the number of times arm $a has been played.
-
-
 ![first equation](https://latex.codecogs.com/gif.latex?%5Csum%20%5Cfrac%7Ba%7D%7B%5Calpha%7D)
 
