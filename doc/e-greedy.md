@@ -14,6 +14,11 @@ where ![eqn two](https://latex.codecogs.com/gif.latex?R_i) is reward obtained at
 2.Choose random arm with probabilty ϵ.
 
 ## Parameters
-In order to use this algorithm it must be intialized with the call function:$-b \pm \sqrt{b^2 - 4ac} \over 2a$
+In order to use this algorithm it must be initialized with the call function:
+
+     epsGreedy( noOfArms::Int64, ϵ::Float64 )
+
+Thus the two function parameters, number of arms and the value of parameter ϵ must be specified in order
+
 
 
