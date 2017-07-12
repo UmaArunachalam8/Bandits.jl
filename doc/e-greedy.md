@@ -17,7 +17,10 @@ where ![eqn two](https://latex.codecogs.com/gif.latex?R_i) is reward obtained at
 In order to use this algorithm it must be initialized with the call function:
 
      epsGreedy( noOfArms::Int64, ϵ::Float64 )
+
 Thus the two function parameters, number of arms and the value of parameter ϵ must be specified in order
 
+## Sample plot
+A sample plot for a 5-arm normal distribution with mean [6 4 9 7 5] and variance of 5 for each arm is shown :
 
-
+![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/figures/epsilongreedy0.1.png)
