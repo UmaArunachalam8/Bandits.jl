@@ -1,6 +1,6 @@
 # ϵ-GREEDY ALGORITHM
 This algorithm uses one parameter ϵ, with which a balance can be made between exploration and exploitation. Arms that maximize reward are chosen with a probability of 1-ϵ and non greedy actions at ϵ probability.
-## -Basic strategy
+## Basic strategy
 * Initialization: 0<ϵ<1
 
  1.Choose an arm that maximizes average reward with probability ϵ, given by
@@ -10,7 +10,8 @@ This algorithm uses one parameter ϵ, with which a balance can be made between e
 
 
 where ![eqn two](https://latex.codecogs.com/gif.latex?R_i) is reward obtained at step i for an arm ![](https://latex.codecogs.com/gif.latex?a), ![](https://latex.codecogs.com/gif.latex?t) is the number of steps played so far and ![eqn three](https://latex.codecogs.com/gif.latex?n_a) is the number of times arm ![](https://latex.codecogs.com/gif.latex?a) has been played, ![](https://latex.codecogs.com/gif.latex?1_a) is equal to 1 if arm played is ![](https://latex.codecogs.com/gif.latex?a), otherwise 0.
+
 2.Choose random arm with probabilty ϵ.
 
-
+## Parameters
 
