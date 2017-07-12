@@ -17,7 +17,6 @@ where ![eqn two](https://latex.codecogs.com/gif.latex?R_i) is reward obtained at
 In order to use this algorithm it must be initialized with the call function:
 
      epsGreedy( noOfArms::Int64, ϵ::Float64 )
-
 Thus the two function parameters, number of arms and the value of parameter ϵ must be specified in order
 
 
