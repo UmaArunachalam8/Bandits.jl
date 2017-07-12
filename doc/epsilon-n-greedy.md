@@ -19,7 +19,6 @@ This algorithm takes two parameters 'c' and 'd' with which ϵ is calculated. Thi
    where ![eqn two](https://latex.codecogs.com/gif.latex?R_i) is reward obtained at step i for an arm ![](https://latex.codecogs.com/gif.latex?a), ![](https://latex.codecogs.com/gif.latex?t) is the number of steps played so far and ![eqn three](https://latex.codecogs.com/gif.latex?n_a) is the number of times arm ![](https://latex.codecogs.com/gif.latex?a) has been played, ![](https://latex.codecogs.com/gif.latex?1_a) is equal to 1 if arm played is ![](https://latex.codecogs.com/gif.latex?a), otherwise 0.
 
 4. Choose random arm with probability ϵ.
-
 ## Parameters
 In order to use this algorithm the values of parameters c and d must be specified as shown:
 
