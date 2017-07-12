@@ -18,5 +18,15 @@ This algorithm takes two parameters 'c' and 'd' with which ϵ is calculated. Thi
 
    where ![eqn two](https://latex.codecogs.com/gif.latex?R_i) is reward obtained at step i for an arm ![](https://latex.codecogs.com/gif.latex?a), ![](https://latex.codecogs.com/gif.latex?t) is the number of steps played so far and ![eqn three](https://latex.codecogs.com/gif.latex?n_a) is the number of times arm ![](https://latex.codecogs.com/gif.latex?a) has been played, ![](https://latex.codecogs.com/gif.latex?1_a) is equal to 1 if arm played is ![](https://latex.codecogs.com/gif.latex?a), otherwise 0.
 
-4. Choose random arm with probabilty ϵ.
+4. Choose random arm with probability ϵ.
 
+## Parameters
+In order to use this algorithm the values of parameters c and d must be specified as shown:
+
+     epsNGreedy( noOfArms::Int64, param_c::Real, param_d::Float64 )
+
+By default, this function is called if values of c and d are not specified.
+
+     epsNGreedy( noOfArms::Int64 )
+
+In such a case c= 1/noOfArms and d=1
