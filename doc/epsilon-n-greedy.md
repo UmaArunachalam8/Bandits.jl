@@ -29,3 +29,7 @@ By default, this function is called if values of c and d are not specified.
      epsNGreedy( noOfArms::Int64 )
 
 In such a case c= 1/noOfArms and d=1
+## Sample plot
+A sample plot for a 5-arm normal distribution with mean [6 4 9 7 5] and variance of 5 for each arm is shown :
+
+![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/figures/epsilonngreedy20.1.png)
