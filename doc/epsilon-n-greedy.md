@@ -13,9 +13,10 @@ This algorithm takes two parameters 'c' and 'd' with which ϵ is calculated. Thi
 3. Choose an arm that maximizes average reward with probability ϵ, given by
 
 
-  ![first equation](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bt%7D%20R_i.1_a%7D%7Bn_a%7D)
+   ![first equation](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bt%7D%20R_i.1_a%7D%7Bn_a%7D)
 
 
-  where ![eqn two](https://latex.codecogs.com/gif.latex?R_i) is reward obtained at step i for an arm ![](https://latex.codecogs.com/gif.latex?a), ![](https://latex.codecogs.com/gif.latex?t) is the number of steps played so far and ![eqn three](https://latex.codecogs.com/gif.latex?n_a) is the number of times arm ![](https://latex.codecogs.com/gif.latex?a) has been played, ![](https://latex.codecogs.com/gif.latex?1_a) is equal to 1 if arm played is ![](https://latex.codecogs.com/gif.latex?a), otherwise 0.
+   where ![eqn two](https://latex.codecogs.com/gif.latex?R_i) is reward obtained at step i for an arm ![](https://latex.codecogs.com/gif.latex?a), ![](https://latex.codecogs.com/gif.latex?t) is the number of steps played so far and ![eqn three](https://latex.codecogs.com/gif.latex?n_a) is the number of times arm ![](https://latex.codecogs.com/gif.latex?a) has been played, ![](https://latex.codecogs.com/gif.latex?1_a) is equal to 1 if arm played is ![](https://latex.codecogs.com/gif.latex?a), otherwise 0.
 
 4. Choose random arm with probabilty ϵ.
+
