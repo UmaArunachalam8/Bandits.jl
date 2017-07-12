@@ -3,7 +3,7 @@ This algorithm takes two parameters 'c' and 'd' with which ϵ is calculated. Thi
 ## Basic strategy
 * Initialization:
    * ϵ=1
-   * c=1/n where n is the total number of arms(default value)
+   * c=1/noOfArms where noOfArms is the total number of arms(default value)
 
 1. if an arm has never been played before, play it
 2. ϵ is calculated as shown below:
