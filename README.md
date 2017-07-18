@@ -4,7 +4,7 @@ This package provide a framework for developing and comparing various Bandit alg
 ## Available Algorithms
 1. ϵ-greedy
    1. [ϵ-greedy](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/e-greedy.md)
-   2. ϵ_n greedy
+   2. [ϵ_n greedy](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/epsilon-n-greedy.md)
 2. Upper Confidence Bound Policies
    1. UCB1
    2. UCB-Normal
