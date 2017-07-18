@@ -10,7 +10,7 @@ This package provide a framework for developing and comparing various Bandit alg
    2. [UCB2](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/UCB2.md)
    3. [UCB-Normal](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/UCB-NORMAL.md)
    4. [Discounted-UCB](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/DISCOUNTED%20UCB.md)
-   5. Sliding Window UCB
+   5. [Sliding Window UCB](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/SLIDING-WINDOW-UCB.md)
 3. Thompson Sampling
    1. Thompson Sampling
    2. Dynamic Thompson Sampling
