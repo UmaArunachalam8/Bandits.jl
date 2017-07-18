@@ -16,7 +16,7 @@ This package provide a framework for developing and comparing various Bandit alg
    2. Dynamic Thompson Sampling
    3. Optimistic Thompson Sampling
 4. EXP3
-   1. EXP3
+   1. [EXP3](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/EXP3.md)
    2. EXP3.1
    3. EXP3-IX
 5. SoftMax
