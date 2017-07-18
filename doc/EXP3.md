@@ -17,6 +17,6 @@ The constructor call to initialize this algorithm :
     EXP3( noOfArms, γ ) #noOfArms is the total number of arms, γ , parameter between 0 and 1
 
 ## Sample plot
-A sample plot for a 5-arm normal distribution with mean [6 4 9 7 5] and variance of 5 for each arm is shown :
+A sample plot for a 5-arm normal distribution with mean [0.6 0.4 0.9 0.7 0.5] and variance of 1 for each arm is shown :
 
 ![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/EXP0.1.png)
