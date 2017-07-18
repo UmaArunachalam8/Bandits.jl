@@ -1,4 +1,4 @@
-# SKIDING WINDOW UCB ALGORITHM
+# SLIDING WINDOW UCB ALGORITHM
 This algorithm involves two parameters τ and ξ, is based on Algorithm3,Moulines, E., & Paristech, T. (2008). On Upper-Confidence Bound Policies for Non-Stationary Bandit Problems. arXiv Preprint, (2008), 1–24.
 
 ## Parameters
