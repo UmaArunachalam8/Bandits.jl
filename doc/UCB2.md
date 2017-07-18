@@ -1,4 +1,4 @@
-# UPPER CONDITIION BOUND - 2 ALGORITHM
+# UPPER CONDITION BOUND - 2 ALGORITHM
 This algorithm uses one parameter α , is implemented based on Figure2,Auer, P., Bianchi, N. C., & Fischer, P. (2002). Finite time analysis of the multiarmed bandit problem. Machine Learning, 47, 235–256.
 # Basic strategy
 * Intialization : 0<α<1
