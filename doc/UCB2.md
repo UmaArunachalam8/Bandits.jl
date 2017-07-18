@@ -13,7 +13,7 @@ This algorithm uses one parameter α , is implemented based on Figure2,Auer, P.,
 ## Parameters
 The constructor call to initialize this algorithm is :
 
-    UCB2( noOfArms::Int, α::Float64 )#noOfArms=number of arms, α-UCB2 parameter
+    UCB2( noOfArms, α )#noOfArms=number of arms, α-UCB2 parameter
 
 ## Sample plot
 A sample plot for a 5-arm normal distribution with mean [6 4 9 7 5] and variance of 5 for each arm is shown :
