@@ -20,6 +20,7 @@ This package provide a framework for developing and comparing various Bandit alg
    2. EXP3.1
    3. EXP3-IX
    4. [EXP3P](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/EXP3P.md)
+   5. [EXP3S](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/EXP3S.md)
 5. SoftMax
 6. REXP3
 
