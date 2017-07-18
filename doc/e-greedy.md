@@ -23,4 +23,4 @@ Thus the two function parameters, number of arms and the value of parameter ϵ m
 ## Sample plot
 A sample plot for a 5-arm normal distribution with mean [6 4 9 7 5] and variance of 5 for each arm is shown :
 
-![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/figures/epsilongreedy0.1.png)
+![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/epsilongreedy0.1.png)
