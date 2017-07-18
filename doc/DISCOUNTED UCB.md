@@ -11,6 +11,6 @@ This algorithm requires a constructor function call given by:
     DUCB( noOfArms, γ ) # ξ , Confidence Scale Parameter is taken as 0.5 by default
 
 ## Sample plot
-A sample plot for a 5-arm normal distribution with mean [6 4 9 7 5] and variance of 5 for each arm is shown :
+A sample plot for a 5-arm normal distribution with mean [6 4 9 7 5] and variance of 1 for each arm is shown :
 
 ![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/ucbd0.9alpha0.5e.png)
