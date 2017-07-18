@@ -9,7 +9,7 @@ This algorithm is implemented based on Figure1,Auer, P., Bianchi, N. C., & Fisch
 ## Parameters
 The constructor call to initialize this algorithm is :
 
-    UCB1( noOfArms::Int ) #noOfArms=number of arms
+    UCB1( noOfArms ) #noOfArms=number of arms
 
 ## Sample plot
 A sample plot for a 5-arm normal distribution with mean [6 4 9 7 5] and variance of 1 for each arm is shown :
