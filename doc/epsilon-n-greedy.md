@@ -20,15 +20,10 @@ This algorithm takes two parameters 'c' and 'd' with which ϵ is calculated. Thi
 
 4. Choose random arm with probability ϵ.
 ## Parameters
-In order to use this algorithm the values of parameters c and d must be specified as shown:
 
-     epsNGreedy( noOfArms::Int64, param_c::Real, param_d::Float64 )
+     epsNGreedy( noOfArms::Int64, param_c::Real, param_d::Float64 ) #noOfArms=total arms;c,d-algorithm parameters
+     epsNGreedy( noOfArms::Int64 ) #c,d defaulted to 1/noOfArms and 1 respectively
 
-By default, this function is called if values of c and d are not specified.
-
-     epsNGreedy( noOfArms::Int64 )
-
-In such a case c= 1/noOfArms and d=1
 ## Sample plot
 A sample plot for a 5-arm normal distribution with mean [6 4 9 7 5] and variance of 1 for each arm is shown :
 
