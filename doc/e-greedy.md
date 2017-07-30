@@ -13,12 +13,9 @@ where ![eqn two](https://latex.codecogs.com/gif.latex?R_i) is reward obtained at
 
 2.Choose random arm with probabilty ϵ.
 
-## Parameters
-In order to use this algorithm it must be initialized with the call function:
+## Parameter
 
-     epsGreedy( noOfArms::Int64, ϵ::Float64 )
-
-Thus the two function parameters, number of arms and the value of parameter ϵ must be specified in order
+     epsGreedy( noOfArms::Int64, ϵ::Float64 ) #noOfArms-Total no. of arms, ϵ-exploration parameter
 
 ## Sample plot
 A sample plot for a 5-arm normal distribution with mean [6 4 9 7 5] and variance of 5 for each arm is shown :
