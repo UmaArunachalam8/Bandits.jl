@@ -17,7 +17,7 @@ This package provide a framework for developing and comparing various Bandit alg
    3. Optimistic Thompson Sampling
 4. EXP3
    1. [EXP3](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/EXP3.md)
-   2. EXP3.1
+   2. [EXP3.1](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/EXP31.md)
    3. EXP3-IX
    4. [EXP3P](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/EXP3P.md)
    5. [EXP3S](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/EXP3S.md)
