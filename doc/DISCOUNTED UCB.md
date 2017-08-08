@@ -8,6 +8,10 @@ This algorithm requires a constructor function call given by:
     DUCB( noOfArms, γ ) # ξ , Confidence Scale Parameter is taken as 0.5 by default
 
 ## Sample plot
-A sample plot for a 5-arm normal distribution with mean [6 4 9 7 5] and variance of 1 for each arm is shown :
+A sample plot for a 5-arm Sinusoidal distribution with period [60 40 90 70 50] for each arm, parameters γ=0.5,ξ=2.0 is shown :
 
-![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/ucbd0.9alpha0.5e.png)
+![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/ducbsin0.52%2010.png)
+
+Another sample plot for a 5 arm pulse distribution with period [60 40 90 70 50] for each arm, change pints [30 20 45 35 25] and on duration of 10 for all arms, parameters γ=0.5,ξ=2.0 is shown:
+
+![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/ducbpulse.52.png)
