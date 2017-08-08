@@ -25,7 +25,7 @@ This package provide a framework for developing and comparing various Bandit alg
 5. SoftMax
 6. REXP3
 
-## Available Arm Models
+## [Available Arm Models](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/ArmModels.md)
 1. Bernoulli
 2. Beta
 3. Normal
