@@ -13,7 +13,7 @@
         Arms.Sinusoidal(period,offset) #isarmrestless defaulted to true
         Arms.Sinusoidal(period) #offset-randomly initialized, isarmrestless defaulted to true
 ## Square
-        Arms.Square(period,dict([(x1,y1)...(xn,yn)])) #period of square wave, dict()-dictionary of change points, xi-int,yi-float
+        Arms.Square(period,dict([(x1,y1)...(xn,yn)])) #period of square wave, dict()-dictionary of change points and values, xi-int,indicates change point,yi-float,indicates value at that change point
 ## Variational
         Arms.Variational(variation,period,isarmrestless,offset) #variation-variation of the arms,period-Time period of the sinusoid, isarmrestles-true if arm is restless otherwise false,offset-initial phase of sinusoid
         Arms.Variational(variation,period,isarmrestless) #offset randomly initialized by default
