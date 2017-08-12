@@ -8,10 +8,16 @@ This algorithm requires a constructor function call given by:
     DUCB( noOfArms, γ ) # ξ , Confidence Scale Parameter is taken as 0.5 by default
 
 ## Sample plot
-A sample plot for a 5-arm Sinusoidal distribution with period [60 40 90 70 50] for each arm, parameters γ=0.5,ξ=2.0 is shown :
+Parameters used :γ=0.5, ξ=2.0
 
-![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/ducbsin0.52%2010.png)
+A sample plot for a 3-arm sinusoidal distribution with time period of each arm = 200 units, offset=[ 0 π/2 3*π/4 ] is shown :
 
-Another sample plot for a 5 arm pulse distribution with period [60 40 90 70 50] for each arm, change pints [30 20 45 35 25] and on duration of 10 for all arms, parameters γ=0.5,ξ=2.0 is shown:
+![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/sinducb2%200.5.png)
 
-![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/ducbpulse.52.png)
+Sample plot for a 3-arm pulse distribution with time period of each arm being 200,high duration of 50 and change points at [100 120 145] for each arm is shown below:
+
+![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/pulseducb2%200.5.png)
+
+Sample plot for a 3-arm square wave distribution with time period of each arm being 200,change points and value at change points for each arm given by [(1,0.5),(40, 0.8),(120,0.25),(180,0.40)]:
+
+![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/sqducb2%200.5.png)
