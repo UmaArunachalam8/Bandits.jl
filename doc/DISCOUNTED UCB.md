@@ -18,6 +18,6 @@ Sample plot for a 3-arm pulse distribution with time period of each arm being 20
 
 ![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/pulseducb2%200.5.png)
 
-Sample plot for a 3-arm square wave distribution with time period of each arm being 200,change points and value at change points for each arm given by [(1,0.5),(40, 0.8),(120,0.25),(180,0.40)]:
+Sample plot for a 3-arm square wave distribution with time period of each arm being 200,change points and value at change points for each arm given by [(20, 0.3),(80,0.90),(150,0.40),(176,0.10)],[(10, 0.4),(70,0.90),(130,0.30),(160,0.5)],[(1,0.5),(40, 0.8),(120,0.25),(180,0.40)] respectively:
 
 ![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/sqducb2%200.5.png)
