@@ -8,7 +8,7 @@ This algorithm requires a constructor function call given by:
     SWUCB( noOfArms, τ ) # ξ , Confidence Scale Parameter is taken as 2.0 by default
 
 ## Sample plots
-Parameters used:τ=2, ξ=2.0 
+Parameters used:τ=2, ξ=2.0
 
 A sample plot for a 3-arm sinusoidal distribution with time period of each arm = 200 units, offset=[ 0 π/2 3*π/4 ] is shown :
 
@@ -18,6 +18,6 @@ Sample plot for a 3-arm pulse distribution with time period of each arm being 20
 
 ![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/pulswucb2%202.0.png)
 
-Sample plot for a 3-arm square wave distribution with time period of each arm being 200,change points and value at change points for each arm given by [(1,0.5),(40, 0.8),(120,0.25),(180,0.40)]:
+Sample plot for a 3-arm square wave distribution with time period of each arm being 200,change points and value at change points for each arm given by [(20, 0.3),(80,0.90),(150,0.40),(176,0.10)],[(10, 0.4),(70,0.90),(130,0.30),(160,0.5)],[(1,0.5),(40, 0.8),(120,0.25),(180,0.40)] respectively:
 
 ![](https://github.com/UmaArunachalam8/Bandits.jl/blob/master/doc/Figures/sqswucb2%202.0.png)
